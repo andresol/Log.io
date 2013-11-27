@@ -50,7 +50,7 @@ class LogStream extends events.EventEmitter
         return
       @_log.info "Watching file: '#{path}'"
       currSize = fs.statSync(path).size
-      watcher = fs.watch path, (event, filename) =>
+      watcher = fs.watchFile path, (event, filename) =>
         if event is 'rename'
           # File has been rotated, start new watcher
           watcher.close()
